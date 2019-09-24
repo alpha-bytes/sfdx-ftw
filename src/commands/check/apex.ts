@@ -1,4 +1,4 @@
-import { Messages } from '@salesforce/core';
+import { Messages, Connection } from '@salesforce/core';
 
 // Checkable abstract class is itself an extension of SfdxCommand
 import { Checkable, CheckableResult } from '../../util/Checkable';
@@ -14,8 +14,10 @@ export default class Apex extends Checkable {
 
   public static description: string = messages.getMessage('commandDescription');
 
-  public async runCheck(): Promise<CheckableResult>{
-    console.log('running'); 
+  // TODO ApexExecutionOverlayAction (Tooling API)
+  // TODO ApexExecutionOverlyResult (Tooling API)
+
+  public async runCheck(connection: Connection): Promise<CheckableResult>{
     const mock: CheckableResult = {
       passed: true
     }; 

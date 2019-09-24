@@ -1,5 +1,5 @@
 import { flags, SfdxCommand, FlagsConfig } from "@salesforce/command";
-import { Messages, SfdxError } from '@salesforce/core';
+import { Messages, SfdxError, Connection } from '@salesforce/core';
 import { AnyJson } from "@salesforce/ts-types";
 
 // Initialize Messages with the current plugin directory
@@ -37,13 +37,16 @@ export abstract class Checkable extends SfdxCommand{
     console.log(conn.getUsername());
 
     try{
-      let result = await this.runCheck(); 
+      let result = await this.runCheck(conn); 
       return JSON.parse(JSON.stringify(result));
     } catch(err){
       throw new SfdxError(err.message);
     }
   }
 
-  abstract runCheck(): Promise<CheckableResult>;
+  /**
+   * Abstract method for concrete class implementation.
+   */
+  abstract runCheck(connection: Connection): Promise<CheckableResult>;
 
 }
