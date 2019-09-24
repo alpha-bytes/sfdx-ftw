@@ -11,7 +11,15 @@ const filePathValidator = (val: string): boolean => {
   return (val.endsWith(CHECKS_DIR));
 }
 
-export default abstract class Checkable extends SfdxCommand{
+/**
+ * Represents the result of a Checkable validation.
+ */
+
+export interface CheckableResult{
+  passed: boolean; 
+}
+
+export abstract class Checkable extends SfdxCommand{
     
   // require a username and support devhub for all checks
   public static supportsDevhubUsername = true; 
@@ -25,18 +33,17 @@ export default abstract class Checkable extends SfdxCommand{
 
   public async run(): Promise<AnyJson>{
 
-    // ensure project
-    if(!this.project){
-      throw new SfdxError('Command must be run from a valid SFDX project'); 
-    }
+    let conn = this.org.getConnection();
+    console.log(conn.getUsername());
 
     try{
-      return this.runCheck();
+      let result = await this.runCheck(); 
+      return JSON.parse(JSON.stringify(result));
     } catch(err){
       throw err; 
     }
   }
 
-  abstract runCheck(): Promise<AnyJson>;
+  abstract runCheck(): Promise<CheckableResult>;
 
 }

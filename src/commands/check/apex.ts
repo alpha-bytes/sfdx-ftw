@@ -1,8 +1,7 @@
 import { Messages, SfdxError } from '@salesforce/core';
-import { AnyJson } from '@salesforce/ts-types';
 
 // Checkable abstract class is itself an extension of SfdxCommand
-import Checkable from '../../util/Checkable';
+import { Checkable, CheckableResult } from '../../util/Checkable';
 
 // Initialize Messages with the current plugin directory
 Messages.importMessagesDirectory(__dirname);
@@ -15,9 +14,12 @@ export default class Apex extends Checkable {
 
   public static description: string = messages.getMessage('commandDescription');
 
-  public async runCheck(): Promise<AnyJson>{
+  public async runCheck(): Promise<CheckableResult>{
     console.log('running'); 
-    return { key: 'val' };
+    const mock: CheckableResult = {
+      passed: true
+    }; 
+    return mock;
   }
 
 }
