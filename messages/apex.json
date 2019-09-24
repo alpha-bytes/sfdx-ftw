@@ -1,0 +1,4 @@
+{
+    "commandDescription": "Validate the result of Apex code.", 
+    "checkerFlagDescription": "Name of the validation suite to run."
+}
