@@ -40,7 +40,7 @@ export abstract class Checkable extends SfdxCommand{
       let result = await this.runCheck(); 
       return JSON.parse(JSON.stringify(result));
     } catch(err){
-      throw err; 
+      throw new SfdxError(err.message);
     }
   }
 

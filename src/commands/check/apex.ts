@@ -1,4 +1,4 @@
-import { Messages, SfdxError } from '@salesforce/core';
+import { Messages } from '@salesforce/core';
 
 // Checkable abstract class is itself an extension of SfdxCommand
 import { Checkable, CheckableResult } from '../../util/Checkable';
