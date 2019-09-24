@@ -18,6 +18,6 @@ export default class Apex extends Checkable {
   public async runCheck(): Promise<AnyJson>{
     console.log('running'); 
     return { key: 'val' };
-  }  
+  }
 
 }

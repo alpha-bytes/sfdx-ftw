@@ -1,3 +1,4 @@
 {
-    "checkerFlagDescription": "Name of the validation suite to run"
+    "checkerFlagDescription": "Name of the validation suite to run", 
+    "rootFlagDescription": "Path to .forcechecks directory when running location validations"
 }
