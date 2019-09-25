@@ -6,11 +6,6 @@ import { AnyJson } from "@salesforce/ts-types";
 Messages.importMessagesDirectory(__dirname);
 const messages = Messages.loadMessages('force-check', 'Checkable');
 
-const CHECKS_DIR = '.forcechecks'; 
-const filePathValidator = (val: string): boolean => {
-  return (val.endsWith(CHECKS_DIR));
-}
-
 /**
  * Represents the result of a Checkable validation.
  */
@@ -22,13 +17,13 @@ export abstract class Checkable extends SfdxCommand{
     
   // require a project and username, support devhub for all Checkables
   public static supportsDevhubUsername = true; 
-  public static requiresProject = true; 
-  public static requiresUsername = true;
+  // public static requiresProject = true; 
+  // public static requiresUsername = true;
 
   // all Checkable instances must include a named checker and a config file
   protected static flagsConfig: FlagsConfig = {
     checker: flags.string({ char: 'c', description: messages.getMessage('checkerFlagDescription'), required: true }), 
-    root: flags.directory({ char: 'r', description: messages.getMessage('rootFlagDescription'), validate: filePathValidator })
+    remotecheck: flags.url({ char: 'r', description: messages.getMessage('remoteFlagDescription') })
   };
 
   public async run(): Promise<AnyJson>{

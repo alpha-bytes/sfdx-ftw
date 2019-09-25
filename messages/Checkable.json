@@ -1,4 +1,4 @@
 {
     "checkerFlagDescription": "Name of the validation suite to run", 
-    "rootFlagDescription": "Path to .forcechecks directory when running location validations"
+    "remoteFlagDescription": "URL of remote directory from which to retrieve checks. Overrides the 'defaultremotecheck' config setting."
 }
