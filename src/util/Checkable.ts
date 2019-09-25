@@ -1,5 +1,5 @@
 import { flags, SfdxCommand, FlagsConfig } from "@salesforce/command";
-import { Messages, SfdxError, Connection } from '@salesforce/core';
+import { Messages, SfdxError } from '@salesforce/core';
 import { AnyJson } from "@salesforce/ts-types";
 
 // Initialize Messages with the current plugin directory
@@ -14,15 +14,15 @@ const filePathValidator = (val: string): boolean => {
 /**
  * Represents the result of a Checkable validation.
  */
-
 export interface CheckableResult{
   passed: boolean; 
 }
 
 export abstract class Checkable extends SfdxCommand{
     
-  // require a username and support devhub for all checks
+  // require a project and username, support devhub for all Checkables
   public static supportsDevhubUsername = true; 
+  public static requiresProject = true; 
   public static requiresUsername = true;
 
   // all Checkable instances must include a named checker and a config file
@@ -33,11 +33,8 @@ export abstract class Checkable extends SfdxCommand{
 
   public async run(): Promise<AnyJson>{
 
-    let conn = this.org.getConnection();
-    console.log(conn.getUsername());
-
     try{
-      let result = await this.runCheck(conn); 
+      let result = await this.runCheck(); 
       return JSON.parse(JSON.stringify(result));
     } catch(err){
       throw new SfdxError(err.message);
@@ -47,6 +44,6 @@ export abstract class Checkable extends SfdxCommand{
   /**
    * Abstract method for concrete class implementation.
    */
-  abstract runCheck(connection: Connection): Promise<CheckableResult>;
+  abstract runCheck(): Promise<CheckableResult>;
 
 }
