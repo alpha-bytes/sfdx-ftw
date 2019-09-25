@@ -11,21 +11,22 @@ export default class ConfigGet extends BaseConfig{
     public static result: SfdxResult = {
         tableColumnData:{
             columns: [
+                { key: 'key', label: 'Key' },
                 { key: 'value', label: 'Value' }
             ]
         }, 
         display() {
-            const theData = { value: this.data };
+            const theData = this.data;
             this.ux.table([theData], this.tableColumnData);
         }
     }
 
-    run(): Promise<AnyJson>{
+    async run(): Promise<AnyJson>{
 
         // if more than one varArgs passed, only return the first
         const theKey = this.args.configKey;
-        const theVal = this.getCheckConfig(theKey);
+        const theVal = await this.getCheckConfig(theKey);
 
-        return JSON.parse(JSON.stringify(theVal));
+        return JSON.parse(JSON.stringify({ key: theKey, value: theVal}));
     }
 }

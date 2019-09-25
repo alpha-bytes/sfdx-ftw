@@ -20,7 +20,7 @@ export default class Apex extends Checkable {
   public async runCheck(): Promise<CheckableResult>{
 
     // get named check
-    const check = this.flags.checker; 
+    // const check = this.flags.checker; 
 
     const mock: CheckableResult = {
       passed: true
