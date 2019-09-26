@@ -1,6 +1,6 @@
 {
-  "name": "force-check",
-  "description": "Code validation tool for the Force.com (Salesforce) platform.",
+  "name": "sfdx-ftw",
+  "description": "sfdx For(ce) The Win!",
   "version": "0.1.0",
   "author": "Kevin Rice",
   "dependencies": {
@@ -35,11 +35,15 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/alpha-bytes/force-check",
+  "homepage": "https://github.com/alpha-bytes/sfdx-ftw",
   "keywords": [
-    "sfdx-plugin"
+    "sfdx-plugin", 
+    "sfdx",
+    "sfdx-ftw", 
+    "ftw", 
+    "forcethewin"
   ],
-  "license": "MIT",
+  "license": "Apache 2.0",
   "oclif": {
     "commands": "./lib/commands",
     "bin": "sfdx",
