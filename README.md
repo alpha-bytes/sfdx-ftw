@@ -23,7 +23,7 @@ $ npm install -g sfdx-ftw
 $ sfdx COMMAND
 running command...
 $ sfdx (-v|--version|version)
-sfdx-ftw/0.1.1 darwin-x64 node-v10.15.1
+sfdx-ftw/0.1.2 darwin-x64 node-v10.15.1
 $ sfdx --help [COMMAND]
 USAGE
   $ sfdx COMMAND
@@ -64,7 +64,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib/commands/ftw/apex.js](https://github.com/alpha-bytes/sfdx-ftw/blob/v0.1.1/lib/commands/ftw/apex.js)_
+_See code: [lib/commands/ftw/apex.js](https://github.com/alpha-bytes/sfdx-ftw/blob/v0.1.2/lib/commands/ftw/apex.js)_
 
 ## `sfdx ftw:config:get [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -79,7 +79,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib/commands/ftw/config/get.js](https://github.com/alpha-bytes/sfdx-ftw/blob/v0.1.1/lib/commands/ftw/config/get.js)_
+_See code: [lib/commands/ftw/config/get.js](https://github.com/alpha-bytes/sfdx-ftw/blob/v0.1.2/lib/commands/ftw/config/get.js)_
 
 ## `sfdx ftw:config:set name=value... [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -95,7 +95,7 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [lib/commands/ftw/config/set.js](https://github.com/alpha-bytes/sfdx-ftw/blob/v0.1.1/lib/commands/ftw/config/set.js)_
+_See code: [lib/commands/ftw/config/set.js](https://github.com/alpha-bytes/sfdx-ftw/blob/v0.1.2/lib/commands/ftw/config/set.js)_
 <!-- commandsstop -->
 <!-- debugging-your-plugin -->
 # Debugging your plugin
