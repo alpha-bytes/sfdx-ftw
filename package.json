@@ -66,8 +66,7 @@
   }, 
   "np": {
     "tests": false, 
-    "tag": "latest", 
-    "yarn": "false", 
+    "tag": "latest",
     "contents": "./lib", 
     "releaseDraft": false, 
     "cleanup": false
