@@ -43,7 +43,7 @@
     "ftw", 
     "forcethewin"
   ],
-  "license": "Apache 2.0",
+  "license": "apache-2.0",
   "oclif": {
     "commands": "./lib/commands",
     "bin": "sfdx",
