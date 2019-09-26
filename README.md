@@ -63,6 +63,8 @@ OPTIONS
                                                                                     this command invocation
 ```
 
+_See code: [lib/commands/ftw/apex.js](https://github.com/alpha-bytes/sfdx-ftw/blob/v0.1.0/lib/commands/ftw/apex.js)_
+
 ## `sfdx ftw:config:get [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
 ```
@@ -75,6 +77,8 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
                                                                                     this command invocation
 ```
+
+_See code: [lib/commands/ftw/config/get.js](https://github.com/alpha-bytes/sfdx-ftw/blob/v0.1.0/lib/commands/ftw/config/get.js)_
 
 ## `sfdx ftw:config:set name=value... [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -89,6 +93,8 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
                                                                                     this command invocation
 ```
+
+_See code: [lib/commands/ftw/config/set.js](https://github.com/alpha-bytes/sfdx-ftw/blob/v0.1.0/lib/commands/ftw/config/set.js)_
 <!-- commandsstop -->
 <!-- debugging-your-plugin -->
 # Debugging your plugin

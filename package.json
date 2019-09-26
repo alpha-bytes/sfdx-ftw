@@ -69,6 +69,7 @@
     "tag": "latest", 
     "yarn": "false", 
     "contents": "./lib", 
-    "releaseDraft": false
+    "releaseDraft": false, 
+    "cleanup": false
   }
 }
