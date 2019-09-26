@@ -1,16 +1,16 @@
-force-check
+sfdx-ftw
 ===========
 
 Code validation tool for force.com (salesforce) platform.
 
-[![Version](https://img.shields.io/npm/v/force-check.svg)](https://npmjs.org/package/force-check)
-[![CircleCI](https://circleci.com/gh/alpha-bytes/force-check/tree/master.svg?style=shield)](https://circleci.com/gh/alpha-bytes/force-check/tree/master)
-[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/alpha-bytes/force-check?branch=master&svg=true)](https://ci.appveyor.com/project/heroku/force-check/branch/master)
-[![Codecov](https://codecov.io/gh/alpha-bytes/force-check/branch/master/graph/badge.svg)](https://codecov.io/gh/alpha-bytes/force-check)
-[![Greenkeeper](https://badges.greenkeeper.io/alpha-bytes/force-check.svg)](https://greenkeeper.io/)
-[![Known Vulnerabilities](https://snyk.io/test/github/alpha-bytes/force-check/badge.svg)](https://snyk.io/test/github/alpha-bytes/force-check)
-[![Downloads/week](https://img.shields.io/npm/dw/force-check.svg)](https://npmjs.org/package/force-check)
-[![License](https://img.shields.io/npm/l/force-check.svg)](https://github.com/alpha-bytes/force-check/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/sfdx-ftw.svg)](https://npmjs.org/package/sfdx-ftw)
+[![CircleCI](https://circleci.com/gh/alpha-bytes/sfdx-ftw/tree/master.svg?style=shield)](https://circleci.com/gh/alpha-bytes/sfdx-ftw/tree/master)
+[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/alpha-bytes/sfdx-ftw?branch=master&svg=true)](https://ci.appveyor.com/project/heroku/sfdx-ftw/branch/master)
+[![Codecov](https://codecov.io/gh/alpha-bytes/sfdx-ftw/branch/master/graph/badge.svg)](https://codecov.io/gh/alpha-bytes/sfdx-ftw)
+[![Greenkeeper](https://badges.greenkeeper.io/alpha-bytes/sfdx-ftw.svg)](https://greenkeeper.io/)
+[![Known Vulnerabilities](https://snyk.io/test/github/alpha-bytes/sfdx-ftw/badge.svg)](https://snyk.io/test/github/alpha-bytes/sfdx-ftw)
+[![Downloads/week](https://img.shields.io/npm/dw/sfdx-ftw.svg)](https://npmjs.org/package/sfdx-ftw)
+[![License](https://img.shields.io/npm/l/sfdx-ftw.svg)](https://github.com/alpha-bytes/sfdx-ftw/blob/master/package.json)
 
 <!-- toc -->
 * [Debugging your plugin](#debugging-your-plugin)
