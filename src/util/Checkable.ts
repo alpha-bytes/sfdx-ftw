@@ -4,7 +4,7 @@ import { AnyJson } from "@salesforce/ts-types";
 
 // Initialize Messages with the current plugin directory
 Messages.importMessagesDirectory(__dirname);
-const messages = Messages.loadMessages('force-check', 'Checkable');
+const messages = Messages.loadMessages('sfdx-ftw', 'Checkable');
 
 /**
  * Represents the result of a Checkable validation.
