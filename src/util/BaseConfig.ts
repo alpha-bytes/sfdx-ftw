@@ -1,20 +1,26 @@
 import { SfdxCommand } from "@salesforce/command";
-import { ConfigFile } from '@salesforce/core';
+import { ConfigFile, Messages } from '@salesforce/core';
 import { AnyJson } from "@salesforce/ts-types";
 import { SfdxError } from "@salesforce/core";
 import { URL } from "url";
-import * as fs from 'fs';
 import * as ws from '../util/Workspace'; 
+
+// Load the specific messages for this file. Messages from @salesforce/command, @salesforce/core,
+// or any library that is using the messages framework can also be loaded this way.
+const messages = Messages.loadMessages('sfdx-ftw', 'config');
 
 class ChecksConfig extends ConfigFile<any> { 
     public static getFileName(){
-        return './.forcechecks/config.json';
+        return './.ftw/config.json';
     }
 }
 
 export enum VALID_KEY { defaultremotecheck, defaultlocalcheck }
 
 export abstract class BaseConfig extends SfdxCommand{
+
+    // messages
+    public static description = messages.getMessage('commandDescription');
 
     // always require a project
     protected static requiresProject = true; 
@@ -73,7 +79,7 @@ export abstract class BaseConfig extends SfdxCommand{
             case VALID_KEY.defaultlocalcheck:
                 const baseDir = await ws.getBaseDir(); 
                 const concatDir = `${baseDir}/${value}`; 
-                const dirExists = fs.existsSync(concatDir);
+                const dirExists = ws.fileExists(concatDir);
                 if(!dirExists){
                     throw new SfdxError(`Directory does not exist on this machine: ${concatDir}`);
                 }

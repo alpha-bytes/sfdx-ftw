@@ -12,7 +12,7 @@ const messages = Messages.loadMessages('sfdx-ftw', 'apex');
 
 export default class Apex extends Checkable {
 
-  public static description: string = messages.getMessage('commandDescription');
+  public static description = messages.getMessage('commandDescription');
 
   // TODO ApexExecutionOverlayAction (Tooling API)
   // TODO ApexExecutionOverlyResult (Tooling API)
