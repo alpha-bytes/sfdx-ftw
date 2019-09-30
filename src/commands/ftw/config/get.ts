@@ -21,7 +21,7 @@ export default class ConfigGet extends BaseConfig{
         }
     }
 
-    async run(): Promise<AnyJson>{
+    async ftwCommand(): Promise<AnyJson>{
 
         // if more than one varArgs passed, only return the first
         const theKey = this.args.configKey;

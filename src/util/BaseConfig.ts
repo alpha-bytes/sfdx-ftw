@@ -1,32 +1,35 @@
-import { SfdxCommand } from "@salesforce/command";
 import { ConfigFile, Messages } from '@salesforce/core';
 import { AnyJson } from "@salesforce/ts-types";
 import { SfdxError } from "@salesforce/core";
 import { URL } from "url";
 import * as ws from '../util/Workspace';
+import { BaseCommand } from "./BaseCommand";
 
 // Load the specific messages for this file. Messages from @salesforce/command, @salesforce/core,
 // or any library that is using the messages framework can also be loaded this way.
 const messages = Messages.loadMessages('sfdx-ftw', 'config');
-const CONFIG_DIR = './.sfdx-ftw'; 
-const CONFIG_FNAME = '.ftwconfig.json'; 
+
+// config defaults
+const CONFIG_DIR = '.sfdx-ftw'; 
+const CONFIG_FNAME = '.ftwconfig.json';
+const CONFIG_CONTENTS = {
+    defaultlocalcheck: `.sfdx/${CONFIG_DIR}/suites`
+};
 
 const CONFIG_OPTS: ConfigFile.Options = {
         filename: CONFIG_FNAME,
         isGlobal: false, 
         filePath: CONFIG_DIR,
-        throwOnNotFound: false
+        throwOnNotFound: false, 
+        isState: false
 };
 
-export enum VALID_KEY { defaultremotecheck, defaultlocalcheck }
+enum VALID_KEY { defaultremotecheck, defaultlocalcheck }
 
-export abstract class BaseConfig extends SfdxCommand{
+export abstract class BaseConfig extends BaseCommand{
 
     // messages
     public static description = messages.getMessage('commandDescription');
-
-    // always require a project
-    protected static requiresProject = true; 
 
     private validateKey(key: string): void{
         if(!(key in VALID_KEY))
@@ -90,7 +93,7 @@ export abstract class BaseConfig extends SfdxCommand{
                 const dir = `${CONFIG_DIR}/${value}`;
                 const dirExists = ws.fileExists(dir);
                 if(!dirExists){
-                    let res = await this.ux.prompt(`Director ${dir} does not exist - create now? (y/n)`); 
+                    let res = await this.ux.prompt(`Directory ${dir} does not exist - create now? (y/n)`); 
                     if(res === 'y' || res === 'Y')
                         return ws.mkdir(dir); 
 

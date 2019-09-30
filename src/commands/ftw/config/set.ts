@@ -8,7 +8,7 @@ export default class ConfigSet extends BaseConfig{
         required: true
     }
 
-    async run(): Promise<AnyJson>{
+    async ftwCommand(): Promise<AnyJson>{
 
         // accept only the first vararg passed in
         const theArg = Object.entries(this.varargs)[0]; 

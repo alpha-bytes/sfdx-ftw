@@ -1,7 +1,8 @@
 import { Messages } from '@salesforce/core';
 
-// Checkable abstract class is itself an extension of SfdxCommand
-import { Checkable, CheckableResult } from '../../util/Checkable';
+// BaseCommand abstract class is itself an extension of SfdxCommand
+import { BaseCommand } from '../../util/BaseCommand';
+import { AnyJson } from '@salesforce/ts-types';
 
 // Initialize Messages with the current plugin directory
 Messages.importMessagesDirectory(__dirname);
@@ -10,22 +11,16 @@ Messages.importMessagesDirectory(__dirname);
 // or any library that is using the messages framework can also be loaded this way.
 const messages = Messages.loadMessages('sfdx-ftw', 'apex');
 
-export default class Apex extends Checkable {
+export default class Apex extends BaseCommand {
 
   public static description = messages.getMessage('commandDescription');
 
   // TODO ApexExecutionOverlayAction (Tooling API)
   // TODO ApexExecutionOverlyResult (Tooling API)
 
-  public async runCheck(): Promise<CheckableResult>{
+  public async ftwCommand(): Promise<AnyJson>{
 
-    // get named check
-    // const check = this.flags.checker; 
-
-    const mock: CheckableResult = {
-      passed: true
-    }; 
-    return mock;
+    return null;
   }
 
 }
