@@ -15,7 +15,7 @@ export default class ConfigSet extends BaseConfig{
         const theKey = theArg[0].toString(); 
         const theVal = theArg[1].toString(); 
 
-        const result = await this.setCheckConfig(theKey, theVal);
+        const result = await this.setFtwConfig(theKey, theVal);
         // TODO figure out why not logging
         if(result)
             return `${theVal} successfully set for config key ${theKey}`;

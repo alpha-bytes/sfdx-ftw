@@ -25,7 +25,7 @@ export default class ConfigGet extends BaseConfig{
 
         // if more than one varArgs passed, only return the first
         const theKey = this.args.configKey;
-        const theVal = await this.getCheckConfig(theKey);
+        const theVal = await BaseConfig.getFtwConfig(theKey);
 
         return JSON.parse(JSON.stringify({ key: theKey, value: theVal}));
     }

@@ -12,49 +12,49 @@ const messages = Messages.loadMessages('sfdx-ftw', 'config');
 // config defaults
 const CONFIG_DIR = '.sfdx-ftw'; 
 const CONFIG_FNAME = '.ftwconfig.json';
-const CONFIG_CONTENTS = {
-    defaultlocalcheck: `.sfdx/${CONFIG_DIR}/suites`
-};
 
 const CONFIG_OPTS: ConfigFile.Options = {
         filename: CONFIG_FNAME,
         isGlobal: false, 
         filePath: CONFIG_DIR,
         throwOnNotFound: false, 
-        isState: false
+        isState: true, 
+        // contents: { // TODO NOT WORKING
+        //     "defaultlocalcheck": "123"
+        // }
 };
 
-enum VALID_KEY { defaultremotecheck, defaultlocalcheck }
+enum VALID_KEY { remotedomain }
 
 export abstract class BaseConfig extends BaseCommand{
 
     // messages
-    public static description = messages.getMessage('commandDescription');
+    public static description = messages.getMessage('baseCommandDescription');
 
-    private validateKey(key: string): void{
+    private static validateKey(key: string): void{
         if(!(key in VALID_KEY))
             throw new SfdxError(`Key ${key} is not valid for this command.`);
 
     }
 
-    protected async getCheckConfig(key: string): Promise<AnyJson> {
+    public static async getFtwConfig(key: string): Promise<AnyJson> {
         // validate key
-        this.validateKey(key);
+        BaseConfig.validateKey(key);
 
-        const myConfig: ConfigFile<any> = await this.getChecksConfigFile(); 
+        const myConfig: ConfigFile<any> = await BaseConfig.getConfigFile(); 
         return myConfig.get(key); 
     }
 
-    protected async setCheckConfig(key: string, value: string): Promise<boolean> {
+    protected async setFtwConfig(key: string, value: string): Promise<boolean> {
         // validate the key and value
-        this.validateKey(key); 
+        BaseConfig.validateKey(key); 
         // get config file and create if it doesn't exist yet
-        const myConfig = await this.getChecksConfigFile();
+        const myConfig = await BaseConfig.getConfigFile();
         if(!(await myConfig.exists()))
             await myConfig.write();
         
         try{
-            await this.validateValue(key, value);
+            await this.validateValue(key, value); 
         } catch(err){
             throw err;
         }
@@ -65,7 +65,15 @@ export abstract class BaseConfig extends BaseCommand{
         return true; 
     }
 
-    private async getChecksConfigFile(): Promise<ConfigFile<any>>{
+    protected async initConfigFile(): Promise<void> {
+        // insert config file
+        const configFile = await BaseConfig.getConfigFile(); 
+        await configFile.write(); 
+        // add suites directory
+        ws.mkdir(`./sfdx/${CONFIG_DIR}/suites`); // TODO throws error
+    }
+
+    private static async getConfigFile(): Promise<ConfigFile<any>>{
         try{ 
             return await ConfigFile.create(CONFIG_OPTS);   
         } catch(err){
@@ -80,26 +88,13 @@ export abstract class BaseConfig extends BaseCommand{
         
         switch(keyEnum){
             // must be a valid url
-            case VALID_KEY.defaultremotecheck:
+            case VALID_KEY.remotedomain:
                 try{
                     new URL(value); 
                 } catch(err){
                     throw new SfdxError(`${value} does not resolve to a valid URL`); 
                 }
                 break; 
-
-            // must be a valid directory
-            case VALID_KEY.defaultlocalcheck: 
-                const dir = `${CONFIG_DIR}/${value}`;
-                const dirExists = ws.fileExists(dir);
-                if(!dirExists){
-                    let res = await this.ux.prompt(`Directory ${dir} does not exist - create now? (y/n)`); 
-                    if(res === 'y' || res === 'Y')
-                        return ws.mkdir(dir); 
-
-                    process.exit(1);
-                    throw new SfdxError(`Directory does not exist on this machine: ${dir}`);
-                }
         }
         
     }
