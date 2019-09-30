@@ -17,8 +17,8 @@ export abstract class Checkable extends SfdxCommand{
     
   // require a project and username, support devhub for all Checkables
   public static supportsDevhubUsername = true; 
-  // public static requiresProject = true; 
-  // public static requiresUsername = true;
+  public static requiresProject = true; 
+  public static requiresUsername = true;
 
   // all Checkable instances must include a named checker and a config file
   protected static flagsConfig: FlagsConfig = {

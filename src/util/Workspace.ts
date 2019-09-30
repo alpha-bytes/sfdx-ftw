@@ -19,3 +19,7 @@ export function readFile(path: string): string{
 
     return fs.readFileSync(path, READ_OPTS); 
 }
+
+export function mkdir(dir: string){
+    fs.mkdirSync(dir); 
+}
