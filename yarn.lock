@@ -2984,6 +2984,11 @@ run-parallel@^1.1.9:
   resolved "https://registry.yarnpkg.com/run-parallel/-/run-parallel-1.1.9.tgz#c9dd3a7cf9f4b2c4b6244e173a6ed866e61dd679"
   integrity sha512-DEqnSRTDw/Tc3FXf49zedI638Z9onwUotBMiUFKmrO2sdFKIbXamXGQ3Axd4qgphxKB4kw/qP1w5kTxnfU1B9Q==
 
+runtypes@^4.0.1:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/runtypes/-/runtypes-4.0.2.tgz#cab7ca45f8599feab00fc9d9280c70e19ab6169b"
+  integrity sha512-2KI/TV2EX9FvZiwQ9J0W5nzMUkrl9Z+9X0ENlqZLXayRqtmTXHcCOP3Zlb0PD7daTCepQ+zAadOEKBm9VQL8dw==
+
 safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.2, safe-buffer@~5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.0.tgz#b74daec49b1148f88c64b68d49b1e815c1f2f519"

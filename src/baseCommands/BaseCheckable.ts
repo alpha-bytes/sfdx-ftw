@@ -3,11 +3,10 @@ import { BaseCommand } from "./BaseCommand";
 import { AssertionSuite } from '../assertion/assertions'; 
 // TODO import * as rt from 'runtypes';
 import * as ws from '../services/workspace'; 
-import { SfdxError, Messages } from '@salesforce/command/node_modules/@salesforce/core';
+import { SfdxError } from '@salesforce/core';
 import { AnyJson } from '@salesforce/ts-types';
 
-const SUITES_DIR = BaseConfig.getSuitesDir(); 
-const messages = Messages.loadMessages('sfdx-ftw', 'baseCheckable'); 
+const SUITES_DIR = BaseConfig.getSuitesDir();
 
 export default abstract class BaseCheckable extends BaseCommand{
 
@@ -15,11 +14,7 @@ export default abstract class BaseCheckable extends BaseCommand{
      * Every checkable command must include the suiteName to check
      */
     public static args = [{name: 'suiteName'}];
-
-    /**
-     * Messages instance for subclass members.
-     */
-    protected static messages: Messages = messages; 
+ 
     /**
      * AssertionSuite that will be initialized for any subclass members by BaseCheckable.
      */
