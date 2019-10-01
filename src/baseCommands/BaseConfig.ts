@@ -9,7 +9,7 @@ import { BaseCommand } from "./BaseCommand";
 // or any library that is using the messages framework can also be loaded this way.
 const messages = Messages.loadMessages('sfdx-ftw', 'config');
 
-enum VALID_KEY { remotedomain }
+enum VALID_KEY { defaultremote }
 
 // config defaults
 const CONFIG_DIR = '.sfdx-ftw'; 
@@ -94,7 +94,7 @@ export abstract class BaseConfig extends BaseCommand{
         
         switch(keyEnum){
             // must be a valid url
-            case VALID_KEY.remotedomain:
+            case VALID_KEY.defaultremote:
                 try{
                     new URL(value); 
                 } catch(err){

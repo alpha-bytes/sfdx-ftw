@@ -1,25 +1,28 @@
-export interface AssertionSuite{
+import * as rt from 'runtypes'; 
+
+export const AssertionSuiteRt = rt.Record({ // REQUIRED props
     /**
      * A list of the dependent files, in SF metadata format, that must exist locally - and that will be 
      * deployed to the target org - in order for assumptions to perform their validations. 
      */
-    dependencies: string[]; 
+    dependencies: rt.Array(rt.String)
+}).And(rt.Partial({ // OPTIONAL props
     /**
      * The author of the assertion suite. 
      */
-    author?: string; 
+    author: rt.String, 
     /**
      * URL to the source for the assertion suite. 
      */
-    location?: string; 
+    location: rt.String,
     /**
-     * An array of assertion file locations. Must resolve either to a file on the local filesystem, 
-     * relative to the project root, or or a file on the web. If using a file hosted remotely, ensure 
-     * that access to the resource is not restricted (e.g. github repo is public, or http location does 
-     * not require authentication).
-     */
-    assertionLocations: string[]; 
-}
+     * An array of remote Assertions that will be retrieved at runtime, but will not be persisted
+     * locally. Values must be properly formatted URLs. 
+     */ 
+    remoteAssertions: rt.Array(rt.String)
+}));
+
+export type AssertionSuite = rt.Static<typeof AssertionSuiteRt>;
 
 export interface AsyncAssertion extends Assertion{
     /**

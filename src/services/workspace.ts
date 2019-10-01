@@ -9,7 +9,15 @@ export async function getBaseDir(): Promise<string>{
     return await SfdxProject.resolveProjectPath(); 
 }
 
-export function fileExists(path: string){
+export function dirExists(folderPath: string){
+    return existsSync(folderPath); 
+}
+
+export function fileExists(filePath: string){
+    return existsSync(filePath);
+}
+
+function existsSync(path: string){
     return fs.existsSync(path); 
 }
 
