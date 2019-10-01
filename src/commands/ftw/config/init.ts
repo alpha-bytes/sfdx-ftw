@@ -1,4 +1,4 @@
-import { BaseConfig } from '../../../util/BaseConfig'; 
+import { BaseConfig } from '../../../baseCommands/BaseConfig'; 
 import { Messages } from '@salesforce/core';
 import { AnyJson } from '@salesforce/ts-types';
 
@@ -9,7 +9,7 @@ export default class extends BaseConfig{
 
     static description = messages.getMessage('initCommandDescription'); 
 
-    async ftwCommand(): Promise<AnyJson>{
+    async configCmd(): Promise<AnyJson>{
 
         try{
             await this.initConfigFile(); 

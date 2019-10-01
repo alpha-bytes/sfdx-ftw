@@ -1,19 +1,12 @@
-import { BaseCommand } from "../../util/BaseCommand";
-import { VarargsConfig } from "@salesforce/command/lib/sfdxCommand";
 import { AnyJson } from "@salesforce/ts-types";
-import { BaseConfig } from '../../util/BaseConfig';
+import BaseCheckable from "../../baseCommands/BaseCheckable";
 
-export default class Begin extends BaseCommand{
+export default class Begin extends BaseCheckable{
 
-    public static args = [{name: 'suiteName'}];
+    public static description = Begin.messages.getMessage('beginCommandDescription');
 
-    // require named validation suite
-    protected static varargs: VarargsConfig = {
-        required: true
-    }; 
+    async checkableCmd(): Promise<AnyJson>{
 
-    async ftwCommand(): Promise<AnyJson>{
-        
 
         return null; 
     }

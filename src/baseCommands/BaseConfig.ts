@@ -2,12 +2,14 @@ import { ConfigFile, Messages } from '@salesforce/core';
 import { AnyJson } from "@salesforce/ts-types";
 import { SfdxError } from "@salesforce/core";
 import { URL } from "url";
-import * as ws from '../util/Workspace';
+import * as ws from '../services/workspace';
 import { BaseCommand } from "./BaseCommand";
 
 // Load the specific messages for this file. Messages from @salesforce/command, @salesforce/core,
 // or any library that is using the messages framework can also be loaded this way.
 const messages = Messages.loadMessages('sfdx-ftw', 'config');
+
+enum VALID_KEY { remotedomain }
 
 // config defaults
 const CONFIG_DIR = '.sfdx-ftw'; 
@@ -24,7 +26,7 @@ const CONFIG_OPTS: ConfigFile.Options = {
         // }
 };
 
-enum VALID_KEY { remotedomain }
+const SUITES_DIR = `./${(CONFIG_OPTS.isState ? '.sfdx' : '')}/${CONFIG_DIR}/suites`;
 
 export abstract class BaseConfig extends BaseCommand{
 
@@ -37,12 +39,25 @@ export abstract class BaseConfig extends BaseCommand{
 
     }
 
+    private static async getConfigFile(): Promise<ConfigFile<any>>{
+        try{ 
+            return await ConfigFile.create(CONFIG_OPTS);   
+        } catch(err){
+            let e = err as SfdxError; 
+            throw e; 
+        }
+    }
+
     public static async getFtwConfig(key: string): Promise<AnyJson> {
         // validate key
         BaseConfig.validateKey(key);
 
         const myConfig: ConfigFile<any> = await BaseConfig.getConfigFile(); 
         return myConfig.get(key); 
+    }
+
+    public static getSuitesDir(): string {
+        return SUITES_DIR; 
     }
 
     protected async setFtwConfig(key: string, value: string): Promise<boolean> {
@@ -70,16 +85,7 @@ export abstract class BaseConfig extends BaseCommand{
         const configFile = await BaseConfig.getConfigFile(); 
         await configFile.write(); 
         // add suites directory
-        ws.mkdir(`./sfdx/${CONFIG_DIR}/suites`); // TODO throws error
-    }
-
-    private static async getConfigFile(): Promise<ConfigFile<any>>{
-        try{ 
-            return await ConfigFile.create(CONFIG_OPTS);   
-        } catch(err){
-            let e = err as SfdxError; 
-            throw e; 
-        }
+        ws.mkdir(`./.sfdx/${CONFIG_DIR}/suites`); // TODO throws error
     }
 
     private async validateValue(key: string, value: string): Promise<void>{
@@ -98,4 +104,10 @@ export abstract class BaseConfig extends BaseCommand{
         }
         
     }
+
+    async ftwCommand(): Promise<AnyJson>{
+        return await this.configCmd(); 
+    }
+
+    protected async abstract configCmd(): Promise<AnyJson>;     
 }

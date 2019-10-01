@@ -1,4 +1,4 @@
-import { BaseConfig } from "../../../util/BaseConfig";
+import { BaseConfig } from "../../../baseCommands/BaseConfig";
 import { AnyJson } from "@salesforce/ts-types";
 import { SfdxResult } from "@salesforce/command";
 
@@ -21,7 +21,7 @@ export default class ConfigGet extends BaseConfig{
         }
     }
 
-    async ftwCommand(): Promise<AnyJson>{
+    async configCmd(): Promise<AnyJson>{
 
         // if more than one varArgs passed, only return the first
         const theKey = this.args.configKey;

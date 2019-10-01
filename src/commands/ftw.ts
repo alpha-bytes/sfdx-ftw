@@ -1,4 +1,4 @@
-import { BaseCommand } from "../util/BaseCommand";
+import { BaseCommand } from "../baseCommands/BaseCommand";
 import { AnyJson } from "@salesforce/ts-types";
 
 export default class FTW extends BaseCommand{

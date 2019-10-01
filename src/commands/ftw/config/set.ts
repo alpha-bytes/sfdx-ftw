@@ -1,6 +1,6 @@
 import { AnyJson } from "@salesforce/ts-types";
 import { VarargsConfig } from "@salesforce/command/lib/sfdxCommand";
-import { BaseConfig } from "../../../util/BaseConfig";
+import { BaseConfig } from "../../../baseCommands/BaseConfig";
 
 export default class ConfigSet extends BaseConfig{
 
@@ -8,7 +8,7 @@ export default class ConfigSet extends BaseConfig{
         required: true
     }
 
-    async ftwCommand(): Promise<AnyJson>{
+    async configCmd(): Promise<AnyJson>{
 
         // accept only the first vararg passed in
         const theArg = Object.entries(this.varargs)[0]; 

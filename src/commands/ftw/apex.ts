@@ -1,7 +1,7 @@
 import { Messages } from '@salesforce/core';
 
 // BaseCommand abstract class is itself an extension of SfdxCommand
-import { BaseCommand } from '../../util/BaseCommand';
+import { BaseCommand } from '../../baseCommands/BaseCommand';
 import { AnyJson } from '@salesforce/ts-types';
 
 // Initialize Messages with the current plugin directory

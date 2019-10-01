@@ -1,7 +1,3 @@
-// TODO use runtypes to validate assertionsuites, assertions (with generics?)
-// move this to utils?
-import * as rt from 'runtypes';
-
 export interface AssertionSuite{
     /**
      * A list of the dependent files, in SF metadata format, that must exist locally - and that will be 
