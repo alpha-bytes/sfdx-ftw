@@ -8,7 +8,8 @@
     "@oclif/config": "^1",
     "@oclif/errors": "^1",
     "@salesforce/command": "^1.4.1",
-    "@salesforce/core": "^1.3.2",
+    "@salesforce/core": "^2.1.2",
+    "download-git-repo": "^2.0.0",
     "runtypes": "^4.0.1",
     "tslib": "^1"
   },
