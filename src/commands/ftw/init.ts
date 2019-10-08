@@ -52,6 +52,7 @@ export default class Init extends BaseCheckable{
 
         // ensure module conforms to abstract AssertionClass definition and, if not, rm
         
+        this.ux.log(`Suite ${this.flags.suite} successfully initialized.`);
 
         return null; 
     }

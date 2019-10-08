@@ -1,6 +1,5 @@
 import { BaseConfig } from './BaseConfig';
 import { BaseCommand } from "./BaseCommand";
-import { AssertionSuite } from '../assertion/assertions';
 import { Messages } from '@salesforce/core';
 import { AnyJson } from '@salesforce/ts-types';
 import { FlagsConfig, flags } from '@salesforce/command';
@@ -29,10 +28,6 @@ export abstract class BaseCheckable extends BaseCommand{
 
     protected static messages: Messages = Messages.loadMessages('sfdx-ftw', 'checkable');
  
-    /**
-     * AssertionSuite that will be initialized for any subclass members by BaseCheckable.
-     */
-    protected suite: AssertionSuite;
     protected suitesDir = BaseConfig.getSuitesDir();
 
     async ftwCommand(): Promise<AnyJson>{ 
