@@ -11,6 +11,7 @@
     "@salesforce/core": "^2.1.2",
     "download-git-repo": "^2.0.0",
     "runtypes": "^4.0.1",
+    "sfdx-ftw-assertions": "^0.1.0",
     "tslib": "^1"
   },
   "devDependencies": {

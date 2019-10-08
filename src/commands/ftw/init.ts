@@ -4,6 +4,7 @@ import * as download from 'download-git-repo';
 import * as ws from '../../services/workspace'; 
 import { BaseConfig, VALID_KEY } from '../../baseCommands/BaseConfig'; 
 import { SfdxError } from "@salesforce/core";
+import { AssertionSuite } from 'sfdx-ftw-assertions'; // TODO roll this back into the package or no
 
 /**
  * Wraps download as the library is not typed. 

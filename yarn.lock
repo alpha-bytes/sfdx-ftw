@@ -3606,6 +3606,11 @@ sfdx-faye@^1.0.9:
     tough-cookie "~2.4.3"
     tunnel-agent "~0.6.0"
 
+sfdx-ftw-assertions@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/sfdx-ftw-assertions/-/sfdx-ftw-assertions-0.1.0.tgz#61daad6dff1a792ed85694873c8c294eff199128"
+  integrity sha512-qUOdIYnZu/8DX/Gzfz9ymwsy6zrrZ3xnV8V0NpirQng+Xj2qvcU33Q8arvkMbjfrxKstsk5ZP8FaFjNi9V7DNA==
+
 shebang-command@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/shebang-command/-/shebang-command-1.2.0.tgz#44aac65b695b03398968c39f363fee5deafdf1ea"
