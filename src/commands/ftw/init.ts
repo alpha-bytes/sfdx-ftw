@@ -50,6 +50,9 @@ export default class Init extends BaseCheckable{
         const modulePath = `${this.project.getPath()}/${targetDir}`;
         const theSuite = require(modulePath);
 
+        // ensure module conforms to abstract AssertionClass definition and, if not, rm
+        
+
         return null; 
     }
 }
