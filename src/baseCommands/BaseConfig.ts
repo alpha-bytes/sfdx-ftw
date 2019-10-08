@@ -11,8 +11,6 @@ import { BaseCommand } from "./BaseCommand";
 // or any library that is using the messages framework can also be loaded this way.
 const messages = Messages.loadMessages('sfdx-ftw', 'config');
 
-enum VALID_KEY { defaultremote }
-
 // config defaults
 const CONFIG_DIR = '.sfdx-ftw'; 
 const CONFIG_FNAME = '.ftwconfig.json';
@@ -28,7 +26,11 @@ const CONFIG_OPTS: ConfigFile.Options = {
         // }
 };
 
-const SUITES_DIR = `./${(CONFIG_OPTS.isState ? '.sfdx' : '')}/${CONFIG_DIR}/suites`;
+const SUITES_DIR = `${(CONFIG_OPTS.isState ? '.sfdx' : '')}/${CONFIG_DIR}/suites`;
+
+export enum VALID_KEY { 
+    defaultremote = 'defaultremote'
+}
 
 export abstract class BaseConfig extends BaseCommand{
 
@@ -50,12 +52,19 @@ export abstract class BaseConfig extends BaseCommand{
         }
     }
 
-    public static async getFtwConfig(key: string): Promise<AnyJson> {
+    protected static async getFtwConfig(key: string): Promise<AnyJson> {
         // validate key
         BaseConfig.validateKey(key);
 
         const myConfig: ConfigFile<any> = await BaseConfig.getConfigFile(); 
         return myConfig.get(key); 
+    }
+
+    /**
+     * Public API to retrieve a valid value from config.
+     */
+    public static async getConfig(theKey: VALID_KEY): Promise<AnyJson>{
+        return await BaseConfig.getFtwConfig(theKey.toString());
     }
 
     public static getSuitesDir(): string {
