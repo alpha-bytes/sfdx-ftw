@@ -32,10 +32,10 @@ USAGE
 <!-- usagestop -->
 <!-- commands -->
 * [`sfdx ftw [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-ftw--v-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
-* [`sfdx ftw:begin [-s <string>] [-r <url>] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-ftwbegin--s-string--r-url--v-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx ftw:config:get [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-ftwconfigget--v-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx ftw:config:init [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-ftwconfiginit--v-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 * [`sfdx ftw:config:set name=value... [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-ftwconfigset-namevalue--v-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx ftw:init -s <string> [-r <string>] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-ftwinit--s-string--r-string--v-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 
 ## `sfdx ftw [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -61,40 +61,6 @@ OPTIONS
 ```
 
 _See code: [lib/commands/ftw.js](https://github.com/alpha-bytes/sfdx-ftw/blob/v0.1.1/lib/commands/ftw.js)_
-
-## `sfdx ftw:begin [-s <string>] [-r <url>] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
-
-Initialize a new assertion suite
-
-```
-USAGE
-  $ sfdx ftw:begin [-s <string>] [-r <url>] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel 
-  trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
-
-OPTIONS
-  -r, --remote=remote                                                               URL from which to retrieve the
-                                                                                    assertion suite. When provided,
-                                                                                    overrides any value passed to
-                                                                                    --suite flag
-
-  -s, --suite=suite                                                                 The assertion suite
-
-  -u, --targetusername=targetusername                                               username or alias for the target
-                                                                                    org; overrides default target org
-
-  -v, --targetdevhubusername=targetdevhubusername                                   username or alias for the dev hub
-                                                                                    org; overrides default dev hub org
-
-  --apiversion=apiversion                                                           override the api version used for
-                                                                                    api requests made by this command
-
-  --json                                                                            format output as json
-
-  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
-                                                                                    this command invocation
-```
-
-_See code: [lib/commands/ftw/begin.js](https://github.com/alpha-bytes/sfdx-ftw/blob/v0.1.1/lib/commands/ftw/begin.js)_
 
 ## `sfdx ftw:config:get [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -176,6 +142,40 @@ OPTIONS
 ```
 
 _See code: [lib/commands/ftw/config/set.js](https://github.com/alpha-bytes/sfdx-ftw/blob/v0.1.1/lib/commands/ftw/config/set.js)_
+
+## `sfdx ftw:init -s <string> [-r <string>] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+Initialize a new assertion suite
+
+```
+USAGE
+  $ sfdx ftw:init -s <string> [-r <string>] [-v <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel 
+  trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+OPTIONS
+  -r, --remote=remote                                                               Remote repo. Overrides
+                                                                                    "defaultremote" repo from config
+                                                                                    file.
+
+  -s, --suite=suite                                                                 (required) Name of the assertion
+                                                                                    suite.
+
+  -u, --targetusername=targetusername                                               username or alias for the target
+                                                                                    org; overrides default target org
+
+  -v, --targetdevhubusername=targetdevhubusername                                   username or alias for the dev hub
+                                                                                    org; overrides default dev hub org
+
+  --apiversion=apiversion                                                           override the api version used for
+                                                                                    api requests made by this command
+
+  --json                                                                            format output as json
+
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+```
+
+_See code: [lib/commands/ftw/init.js](https://github.com/alpha-bytes/sfdx-ftw/blob/v0.1.1/lib/commands/ftw/init.js)_
 <!-- commandsstop -->
 <!-- debugging-your-plugin -->
 # Debugging your plugin
