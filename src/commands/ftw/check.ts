@@ -19,6 +19,7 @@ export default class Check extends BaseCheckable{
 
         // get list of assertions
         let promises = []; 
+        // TODO move user-defined assertions inside this repo, out of sfdx-ftw-assertions (avoid tight coupling)
         suite.getAssertions().forEach(assertion => {
             if(AssertionSuite.isSimpleAssertion(assertion)){
                 console.log('yeah');
