@@ -4,7 +4,7 @@ import * as download from 'download-git-repo';
 import * as ws from '../../services/workspace'; 
 import { BaseConfig, VALID_KEY } from '../../baseCommands/BaseConfig'; 
 import { SfdxError } from "@salesforce/core";
-import { AssertionSuite } from 'sfdx-ftw-assertions'; 
+import { AssertionSuite } from 'sfdx-ftw-assertions';
 
 /**
  * Wraps download as the library is not typed. 
@@ -47,18 +47,12 @@ export default class Init extends BaseCheckable{
         if(!ws.dirExists(targetDir))
             throw new SfdxError(`Directory could not be resolved: ${targetDir}`); 
 
-        // otherwise, load the exported module
-        const modulePath = `${this.project.getPath()}/${targetDir}`;
-        const theSuite = require(modulePath) as AssertionSuite;
-
-        const isSuite = theSuite instanceof AssertionSuite; 
-        if(!isSuite)
-            throw new SfdxError(`
-            The imported module ${this.flags.suite} does not properly implement the AssertionSuite class requirements.
-            Contact the repo's maintainer so that they can update it.`);
-
-        // ensure module conforms to abstract AssertionClass definition and, if not, rm
-        console.log(theSuite.dependencies);
+        // defer to base class to validate requirements of the exported module
+        try{
+            this.load(this.flags.suite); 
+        } catch(err){
+            throw new SfdxError(`Assertion suite could not be initialized: ${err.message}`); 
+        }
 
         return null; 
     }

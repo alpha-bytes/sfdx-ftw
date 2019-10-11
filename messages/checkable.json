@@ -1,4 +1,5 @@
 {
+    "checkCommandDescription": "Check your implementation against assertion suite requirements", 
     "initCommandDescription": "Initialize a new assertion suite",
     "checkerFlagDescription": "Name of the validation suite to run", 
     "remoteFlagDescription": "URL of remote directory from which to retrieve checks. Overrides the 'defaultremotecheck' config setting."
